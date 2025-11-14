@@ -1,0 +1,16 @@
+@page { size: A4; margin: 18mm; }
+body{font-family: 'Arial', sans-serif;color:#111;background:white;margin:0}
+.poster{border:6px solid #D9534F;padding:18px;border-radius:8px}
+header{background:#D9534F;color:white;padding:12px;border-radius:6px}
+header h1{margin:0;font-size:28px}
+.subtitle{margin:6px 0 0;font-size:14px}
+.poster-body{display:flex;gap:18px;margin-top:14px}
+.left{flex:2}
+.right{flex:1;border-left:3px dashed #eee;padding-left:12px}
+.left h2{color:#D9534F}
+.call{margin-top:12px;font-weight:700;color:#C9302C}
+.emergency{margin-top:12px;padding:8px;border-radius:6px;background:#FFF0F0;color:#900}
+footer{margin-top:18px;text-align:center;color:#444}
+@media print{
+  .poster{border:none}
+}

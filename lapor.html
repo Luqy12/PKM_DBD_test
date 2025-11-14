@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lapor — Bersih Itu Patriotik</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <meta name="theme-color" content="#4CAF50">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-box" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5v6.09c0 4.94 3.42 9.26 8 10.91c4.58-1.65 8-6.08 8-10.91V5l-8-3z" fill="#fff" fill-opacity="0.3"></path><path d="M11 7h2v4h4v2h-4v4h-2v-4H7v-2h4V7z" fill="#fff"></path></svg>
+        </div>
+        <div>
+          <h1 class="site-title">Bersih Itu Patriotik</h1>
+          <p class="tagline">Gerakan Cinta Tanah Air — Lingkungan Bebas DBD</p>
+        </div>
+      </div>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" class="nav">
+        <a href="index.html" class="nav-link">Beranda</a>
+        <a href="about.html" class="nav-link">Tentang DBD</a>
+        <a href="3m.html" class="nav-link">3M &amp; Praktik</a>
+        <a href="program.html" class="nav-link">Program</a>
+        <a href="stats.html" class="nav-link">Statistik</a>
+        <a href="lapor.html" class="nav-link nav-cta is-active">Lapor</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card wide-card">
+      <div class="section-header" style="text-align: left; flex-direction: column; align-items: flex-start;">
+        <span class="section-eyebrow">Partisipasi Warga</span>
+        <div>
+          <h2>Lapor Temuan Jentik atau Kasus DBD</h2>
+          <p>Lihat genangan air yang bisa jadi sarang nyamuk atau tahu ada warga dengan gejala DBD? Laporkan segera agar tim dapat melakukan verifikasi dan tindak lanjut.</p>
+        </div>
+      </div>
+      <div style="max-width: 600px; margin: 2rem auto 0;">
+        <form id="reportForm" class="report-form">
+          <div class="form-group">
+            <label for="r_name">Nama Pelapor (Opsional)</label>
+            <input id="r_name" type="text" placeholder="Contoh: Budi Santoso" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="r_address">Alamat Lengkap / RT & RW</label>
+            <input id="r_address" type="text" placeholder="Contoh: Jl. Merdeka No. 10, RT 05 / RW 02" required autocomplete="street-address" />
+          </div>
+          <div class="form-group">
+            <label for="r_note">Detail Laporan</label>
+            <textarea id="r_note" rows="5" placeholder="Jelaskan lokasi temuan jentik (misal: di pot bunga depan rumah) atau gejala yang dialami warga." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full" style="padding: 16px; font-size: 1.1rem;">Kirim Laporan via Email</button>
+        </form>
+        <p class="muted small" style="text-align: center; margin-top: 1rem;">Tindakan ini akan membuka aplikasi email Anda untuk mengirim laporan. Jika ada gejala berat seperti pendarahan atau lemas, segera hubungi Puskesmas atau rumah sakit terdekat.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Bersih Itu Patriotik — Tim PKM. Untuk bantuan cetak & materi hubungi koordinator.</p>
+    </div>
+  </footer>
+
+  <!-- toast -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <!-- Main script -->
+  <script src="scripts.js"></script>
+</body>
+</html>

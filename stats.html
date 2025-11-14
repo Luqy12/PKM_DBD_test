@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Statistik Iklim DBD — Bersih Itu Patriotik</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+e2at3bFQ3bWQjsFc1UhvYcJH0Kc7pGi9GZBC4F3s=" crossorigin="">
+
+  <meta name="theme-color" content="#0F8B6D">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-box" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5v6.09c0 4.94 3.42 9.26 8 10.91c4.58-1.65 8-6.08 8-10.91V5l-8-3z" fill="#fff" fill-opacity="0.3"></path><path d="M11 7h2v4h4v2h-4v4h-2v-4H7v-2h4V7z" fill="#fff"></path></svg>
+        </div>
+        <div>
+          <h1 class="site-title">Bersih Itu Patriotik</h1>
+          <p class="tagline">Gerakan Cinta Tanah Air — Lingkungan Bebas DBD</p>
+        </div>
+      </div>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Buka menu navigasi">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" class="nav">
+        <a href="index.html" class="nav-link">Beranda</a>
+        <a href="about.html" class="nav-link">Tentang DBD</a>
+        <a href="3m.html" class="nav-link">3M &amp; Praktik</a>
+        <a href="program.html" class="nav-link">Program</a>
+        <a href="stats.html" class="nav-link is-active">Statistik</a>
+        <a href="lapor.html" class="nav-link nav-cta">Lapor</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card wide-card analytics-card">
+      <div class="section-header">
+        <span class="section-eyebrow">Dashboard Statistik</span>
+        <div>
+          <h2>Analitik DBD Berbasis Iklim</h2>
+          <p>Visualisasi data kasus, kelembaban, dan prediksi angka insiden dari BMKG (<a href="https://iklim.bmkg.go.id/id/dbdklim/" target="_blank" rel="noopener">iklim.bmkg.go.id/id/dbdklim</a>) ditambah laporan warga.</p>
+        </div>
+      </div>
+
+      <div class="filters">
+        <label for="yearSelect">Tahun</label>
+        <select id="yearSelect">
+          <option value="2023">2023</option>
+          <option value="2024" selected>2024</option>
+          <option value="2025">2025</option>
+        </select>
+        <label for="monthSelect">Bulan</label>
+        <select id="monthSelect">
+          <option value="all">Semua</option>
+          <option value="1">Januari</option>
+          <option value="2">Februari</option>
+          <option value="3">Maret</option>
+          <option value="4">April</option>
+          <option value="5">Mei</option>
+          <option value="6">Juni</option>
+          <option value="7">Juli</option>
+          <option value="8">Agustus</option>
+          <option value="9">September</option>
+          <option value="10">Oktober</option>
+          <option value="11">November</option>
+          <option value="12">Desember</option>
+        </select>
+        <button id="filterBtn" class="btn btn-primary">Terapkan</button>
+      </div>
+
+      <div class="analytics-grid">
+        <article class="chart-card">
+          <h3>Trend Kasus DBD</h3>
+          <div class="chart-wrap tall">
+            <canvas id="casesChart"></canvas>
+          </div>
+        </article>
+        <article class="chart-card">
+          <h3>Kelembaban &amp; Kesesuaian RH</h3>
+          <div class="chart-wrap tall">
+            <canvas id="humidityChart"></canvas>
+          </div>
+        </article>
+      </div>
+
+      <div class="data-table">
+        <h3>Data Bulanan Terperinci</h3>
+        <table id="statsTable" class="stats-table">
+          <thead>
+            <tr>
+              <th>Bulan</th>
+              <th>Tahun</th>
+              <th>Kasus</th>
+              <th>RH (%)</th>
+              <th>Kesesuaian RH</th>
+              <th>Prediksi AI (/100.000)</th>
+            </tr>
+          </thead>
+          <tbody id="statsTableBody"></tbody>
+        </table>
+      </div>
+
+      <p class="muted small">Data sumber: dashboard publik CegahDBD — update nasional terkini mengenai angka insiden dan kesiapsiagaan DBD (akses <a href="https://www.cegahdbd.com/tentang-dbd" target="_blank" rel="noopener">cegahdbd.com</a>).</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Bersih Itu Patriotik — Tim PKM. Semua informasi berbasis data publik BMKG dan edukasi kesehatan masyarakat.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

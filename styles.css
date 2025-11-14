@@ -111,6 +111,11 @@ a:hover{color: var(--primary-dark); text-decoration:underline}
 .nav.open{display:flex;flex-direction:column;position:absolute;top:80px;right:24px;background:#ffffff;padding:18px;border-radius:20px;box-shadow:var(--shadow-soft);min-width:220px}
 .nav.open .nav-link{width:100%}
 .nav.open .nav-cta{justify-content:center;text-align:center}
+.nav.open .nav-link {
+  color: var(--primary-dark); /* Mengubah warna teks menjadi biru tua */
+}
+.nav.open .nav-link:hover { color: var(--primary); background: var(--surface-alt); }
+.nav.open .nav-link.is-active { color: var(--primary-dark); background: var(--surface-alt); font-weight: 700; }
 
 .hero{
   padding:48px 0 32px;

@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lapor â€” Bersih Itu Patriotik</title>
+  <title>Lapor — Bersih Itu Patriotik</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="manifest" href="../manifest.json"><link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../assets/css/styles.css">
   <style>
     .option-cards {
       display: grid;
@@ -99,7 +100,7 @@
         </div>
         <div>
           <h1 class="site-title">Bersih Itu Patriotik</h1>
-          <p class="tagline">Gerakan Cinta Tanah Air â€” Lingkungan Bebas DBD</p>
+          <p class="tagline">Gerakan Cinta Tanah Air — Lingkungan Bebas DBD</p>
         </div>
       </div>
 
@@ -124,7 +125,7 @@
       <div class="section-header" style="text-align: center; flex-direction: column; align-items: center;">
         <span class="section-eyebrow">Partisipasi Warga</span>
         <div>
-          <h2>ðŸ“¢ Lapor Temuan Jentik atau Kasus DBD</h2>
+          <h2>📢 Lapor Temuan Jentik atau Kasus DBD</h2>
           <p>Pilih salah satu cara pelaporan di bawah ini sesuai kemudahan Anda</p>
         </div>
       </div>
@@ -133,7 +134,7 @@
       <div class="option-cards" id="optionCards">
         <div class="option-card" onclick="window.reportsLapor.selectOption('gmail')">
           <div class="option-icon" style="background: linear-gradient(135deg, #EA4335 0%, #C5221F 100%);">
-            âœ‰ï¸
+            ✉️
           </div>
           <h3>Lapor via Gmail</h3>
           <p>Kirim laporan langsung ke email koordinator dengan template yang sudah disediakan. Data otomatis tersimpan
@@ -143,7 +144,7 @@
 
         <div class="option-card" onclick="window.reportsLapor.selectOption('gform')">
           <div class="option-icon" style="background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);">
-            ðŸ“
+            📝
           </div>
           <h3>Lapor via Google Form</h3>
           <p>Isi formulir Google yang terstruktur. Data akan otomatis masuk ke Google Sheets untuk tracking.</p>
@@ -153,11 +154,11 @@
 
       <!-- Gmail Form Container -->
       <div id="formContainer">
-        <a href="javascript:void(0)" onclick="window.reportsLapor.backToOptions()" class="back-btn">â† Kembali ke
+        <a href="javascript:void(0)" onclick="window.reportsLapor.backToOptions()" class="back-btn">← Kembali ke
           pilihan</a>
 
         <div id="gmailForm">
-          <h3 style="margin-top: 0;">ðŸ“§ Form Laporan via Gmail</h3>
+          <h3 style="margin-top: 0;">📧 Form Laporan via Gmail</h3>
           <p class="muted">Isi form di bawah, lalu klik tombol kirim untuk membuka Gmail dengan template yang sudah
             terisi.</p>
 
@@ -175,18 +176,18 @@
               <label for="r_category">Kategori Laporan <span style="color: red;">*</span></label>
               <select id="r_category" required>
                 <option value="">Pilih kategori...</option>
-                <option value="jentik">ðŸ¦Ÿ Temuan Jentik</option>
-                <option value="kasus">ðŸ¥ Kasus/Gejala DBD</option>
-                <option value="lingkungan">ðŸŒ³ Lingkungan Berisiko</option>
-                <option value="lainnya">ðŸ“‹ Lainnya</option>
+                <option value="jentik">🦟 Temuan Jentik</option>
+                <option value="kasus">🏥 Kasus/Gejala DBD</option>
+                <option value="lingkungan">🌳 Lingkungan Berisiko</option>
+                <option value="lainnya">📋 Lainnya</option>
               </select>
             </div>
             <div class="form-group">
               <label for="r_priority">Tingkat Prioritas <span style="color: red;">*</span></label>
               <select id="r_priority" required>
-                <option value="low">ðŸŸ¢ Rendah - Pemantauan rutin</option>
-                <option value="medium" selected>ðŸŸ¡ Sedang - Perlu perhatian</option>
-                <option value="high">ðŸ”´ Tinggi - Urgent, perlu tindakan segera</option>
+                <option value="low">🟢 Rendah - Pemantauan rutin</option>
+                <option value="medium" selected>🟡 Sedang - Perlu perhatian</option>
+                <option value="high">🔴 Tinggi - Urgent, perlu tindakan segera</option>
               </select>
             </div>
             <div class="form-group">
@@ -194,22 +195,22 @@
               <textarea id="r_note" rows="5" placeholder="Jelaskan lokasi temuan jentik atau gejala yang dialami..."
                 required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary full" style="padding: 16px; font-size: 1.1rem;">ðŸ“¨ Kirim via
+            <button type="submit" class="btn btn-primary full" style="padding: 16px; font-size: 1.1rem;">📨 Kirim via
               Gmail</button>
           </form>
         </div>
 
         <div id="gformInfo" style="display: none;">
-          <h3 style="margin-top: 0;">ðŸ“ Google Form</h3>
+          <h3 style="margin-top: 0;">📝 Google Form</h3>
           <p>Gunakan Google Form untuk pelaporan terstruktur. Data otomatis masuk ke Google Sheets.</p>
 
           <a href="gform.html" target="_blank" class="btn btn-primary"
             style="display: inline-block; margin-top: 1rem; padding: 16px 32px; font-size: 1.1rem;">
-            Buka Form Laporan â†’
+            Buka Form Laporan →
           </a>
 
           <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
-            <h4 style="margin-top: 0;">â„¹ï¸ Petunjuk Google Form:</h4>
+            <h4 style="margin-top: 0;">ℹ️ Petunjuk Google Form:</h4>
             <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.8;">
               <li>Klik tombol di atas untuk membuka form</li>
               <li>Isi semua field yang wajib (*)</li>
@@ -228,7 +229,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2025 Bersih Itu Patriotik â€” Tim PKM.</p>
+      <p>&copy; 2025 Bersih Itu Patriotik — Tim PKM.</p>
     </div>
   </footer>
 
@@ -263,4 +264,3 @@
 </body>
 
 </html>
-

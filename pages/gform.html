@@ -218,13 +218,13 @@
 <body>
     <div class="container">
         <div class="form-header">
-            <h1>ðŸ“‹ Laporan Temuan DBD</h1>
+            <h1>📋 Laporan Temuan DBD</h1>
             <p>Form pelaporan jentik nyamuk atau kasus DBD untuk Program PKM "Bersih Itu Patriotik"</p>
         </div>
 
         <div class="form-body">
             <div id="successMessage" class="success-message">
-                <h3 style="margin-bottom: 0.5rem;">âœ“ Laporan Berhasil Dikirim!</h3>
+                <h3 style="margin-bottom: 0.5rem;">✓ Laporan Berhasil Dikirim!</h3>
                 <p>Terima kasih atas partisipasi Anda. Laporan telah tersimpan dan akan segera ditindaklanjuti.</p>
             </div>
 
@@ -259,10 +259,10 @@
                     </label>
                     <select id="kategori" required>
                         <option value="">-- Pilih Kategori --</option>
-                        <option value="jentik">ðŸ¦Ÿ Temuan Jentik Nyamuk</option>
-                        <option value="kasus">ðŸ¥ Kasus atau Gejala DBD</option>
-                        <option value="lingkungan">ðŸŒ³ Lingkungan Berisiko</option>
-                        <option value="lainnya">ðŸ“‹ Lainnya</option>
+                        <option value="jentik">🦟 Temuan Jentik Nyamuk</option>
+                        <option value="kasus">🏥 Kasus atau Gejala DBD</option>
+                        <option value="lingkungan">🌳 Lingkungan Berisiko</option>
+                        <option value="lainnya">📋 Lainnya</option>
                     </select>
                 </div>
 
@@ -273,15 +273,15 @@
                     <div class="radio-group">
                         <div class="radio-option">
                             <input type="radio" id="priority-low" name="prioritas" value="low" required>
-                            <label for="priority-low">ðŸŸ¢ Rendah - Pemantauan rutin</label>
+                            <label for="priority-low">🟢 Rendah - Pemantauan rutin</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" id="priority-medium" name="prioritas" value="medium" checked>
-                            <label for="priority-medium">ðŸŸ¡ Sedang - Perlu perhatian</label>
+                            <label for="priority-medium">🟡 Sedang - Perlu perhatian</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" id="priority-high" name="prioritas" value="high">
-                            <label for="priority-high">ðŸ”´ Tinggi - Urgent, perlu tindakan segera</label>
+                            <label for="priority-high">🔴 Tinggi - Urgent, perlu tindakan segera</label>
                         </div>
                     </div>
                 </div>
@@ -298,15 +298,15 @@
                 </div>
 
                 <button type="submit" class="submit-button">
-                    ðŸ“¨ Kirim Laporan
+                    📨 Kirim Laporan
                 </button>
             </form>
         </div>
 
         <div class="form-footer">
-            <p>Tim PKM "Bersih Itu Patriotik" â€¢ Untuk kasus darurat, hubungi Puskesmas terdekat</p>
+            <p>Tim PKM "Bersih Itu Patriotik" • Untuk kasus darurat, hubungi Puskesmas terdekat</p>
             <p style="margin-top: 0.5rem;">
-                <a href="../index.html">â† Kembali ke Beranda</a> | <a href="reports.html">Lihat Semua Laporan</a>
+                <a href="../index.html">← Kembali ke Beranda</a> | <a href="reports.html">Lihat Semua Laporan</a>
             </p>
         </div>
     </div>
@@ -334,7 +334,7 @@
                 reports.unshift(formData);
                 localStorage.setItem('pkm_dbd_reports', JSON.stringify(reports));
 
-                console.log('âœ“ Laporan berhasil disimpan ke localStorage');
+                console.log('✓ Laporan berhasil disimpan ke localStorage');
 
                 // Show success message
                 showSuccessMessage();
@@ -351,7 +351,7 @@
 
             } catch (error) {
                 console.error('Error saving report:', error);
-                alert('âŒ Gagal menyimpan laporan. Silakan coba lagi.');
+                alert('❌ Gagal menyimpan laporan. Silakan coba lagi.');
             }
 
             return false;
@@ -371,4 +371,3 @@
 </body>
 
 </html>
-

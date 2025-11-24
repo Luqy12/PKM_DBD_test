@@ -1,1 +1,236 @@
-﻿
+﻿<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Checklist PSN — Bersih Itu Patriotik</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .checklist-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .checklist-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+
+        .checklist-group {
+            margin-bottom: 2rem;
+        }
+
+        .checklist-group h3 {
+            color: #3B82F6;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .checklist-item:hover {
+            background: #f8f9fa;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 0.25rem;
+            accent-color: #3B82F6;
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .progress-sticky {
+            position: sticky;
+            top: 1rem;
+            background: #3B82F6;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            z-index: 100;
+        }
+
+        .print-btn {
+            background: white;
+            color: #3B82F6;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media print {
+
+            .site-header,
+            .site-footer,
+            .progress-sticky,
+            #navToggle {
+                display: none;
+            }
+
+            .checklist-container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+
+    <meta name="theme-color" content="#3B82F6">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div class="logo-box" aria-hidden="true">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4 5v6.09c0 4.94 3.42 9.26 8 10.91c4.58-1.65 8-6.08 8-10.91V5l-8-3z" fill="#fff"
+                            fill-opacity="0.3"></path>
+                        <path d="M11 7h2v4h4v2h-4v4h-2v-4H7v-2h4V7z" fill="#fff"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="site-title">Bersih Itu Patriotik</h1>
+                    <p class="tagline">Gerakan Cinta Tanah Air — Lingkungan Bebas DBD</p>
+                </div>
+            </div>
+
+            <button id="navToggle" class="nav-toggle" aria-label="Buka menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav id="mainNav" class="nav">
+                <a href="../index.html" class="nav-link">Beranda</a>
+                <a href="about.html" class="nav-link">Tentang DBD</a>
+                <a href="3m.html" class="nav-link">3M &amp; Praktik</a>
+                <a href="program.html" class="nav-link">Program</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="quiz.html" class="nav-link">Quiz</a>
+                <a href="checklist.html" class="nav-link is-active">Checklist</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 2rem; margin-bottom: 3rem;">
+
+        <div class="progress-sticky">
+            <div>
+                <span style="font-weight: 600;">Progress Mingguan Anda</span>
+                <div style="font-size: 0.85rem; opacity: 0.9;">Selesaikan semua item untuk lingkungan bebas jentik!
+                </div>
+            </div>
+            <button onclick="window.print()" class="print-btn">🖨️ Cetak</button>
+        </div>
+
+        <div class="checklist-container">
+            <div class="checklist-header">
+                <h2>✅ Checklist Pemberantasan Sarang Nyamuk (PSN)</h2>
+                <p>Lakukan pemeriksaan ini minimal <strong>1x seminggu</strong> (Setiap Jumat)</p>
+            </div>
+
+            <div class="checklist-group">
+                <h3>🛁 Kamar Mandi & Toilet</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="cm1">
+                    <label for="cm1">Kuras bak mandi dan sikat dindingnya agar telur nyamuk rontok.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="cm2">
+                    <label for="cm2">Periksa ember atau wadah penampungan air di toilet.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="cm3">
+                    <label for="cm3">Pastikan tutup kloset tertutup jika jarang digunakan.</label>
+                </div>
+            </div>
+
+            <div class="checklist-group">
+                <h3>🏠 Area Dalam Rumah</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dr1">
+                    <label for="dr1">Ganti air di vas bunga dan tempat minum hewan peliharaan.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dr2">
+                    <label for="dr2">Periksa tatakan dispenser air minum (sering terlewat!).</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dr3">
+                    <label for="dr3">Pastikan tidak ada baju yang menggantung terlalu lama (tempat nyamuk
+                        bersembunyi).</label>
+                </div>
+            </div>
+
+            <div class="checklist-group">
+                <h3>🌳 Halaman & Luar Rumah</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="lr1">
+                    <label for="lr1">Bersihkan talang air dari daun kering agar tidak ada air menggenang.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="lr2">
+                    <label for="lr2">Kubur atau daur ulang barang bekas (botol, kaleng, ban bekas).</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="lr3">
+                    <label for="lr3">Tutup rapat tandon/toren air dan cek apakah ada celah.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="lr4">
+                    <label for="lr4">Periksa pot tanaman, terutama yang menggunakan tatakan air.</label>
+                </div>
+            </div>
+
+            <div
+                style="margin-top: 2rem; padding: 1rem; background: #e7f3ff; border-radius: 8px; border-left: 4px solid #3B82F6;">
+                <strong>💡 Tips:</strong> Ajak seluruh anggota keluarga untuk berpartisipasi. Jadikan kegiatan ini
+                kebiasaan rutin setiap Jumat pagi ("Jumat Bersih").
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Bersih Itu Patriotik — Tim PKM. Checklist digital PSN.</p>
+        </div>
+    </footer>
+
+    <!-- Main scripts -->
+    <script src="../assets/js/scripts.js"></script>
+</body>
+
+</html>

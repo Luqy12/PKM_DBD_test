@@ -1,5 +1,6 @@
 ﻿<!doctype html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,6 +14,7 @@
       --muted: #6B7280;
       --border: #E5E7EB;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f4f7f6;
@@ -21,51 +23,116 @@
       margin: 0;
       padding: 2rem;
     }
+
     .container {
       max-width: 1100px;
       margin: 0 auto;
       background-color: #fff;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
+
     .header {
       padding: 2rem;
       text-align: center;
       border-bottom: 1px solid var(--border);
     }
-    .header h1 { color: var(--primary-dark); margin: 0 0 0.5rem; }
-    .header p { color: var(--muted); margin: 0; }
-    .content { padding: 2rem; }
+
+    .header h1 {
+      color: var(--primary-dark);
+      margin: 0 0 0.5rem;
+    }
+
+    .header p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.95rem;
     }
-    th, td {
+
+    th,
+    td {
       border: 1px solid var(--border);
       padding: 12px 15px;
       text-align: left;
     }
+
     th {
       background-color: #f9fafb;
       font-weight: 600;
     }
-    td { height: 40px; }
-    .actions { text-align: center; padding: 2rem; border-top: 1px solid var(--border); }
-    .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; background-color: var(--primary); color: #fff; border: none; cursor: pointer; }
-    .btn:hover { background-color: var(--primary-dark); }
+
+    td {
+      height: 40px;
+    }
+
+    .actions {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      background-color: var(--primary);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+    }
 
     @media print {
-      body { padding: 0; background-color: #fff; }
-      .container { box-shadow: none; border-radius: 0; margin: 0; max-width: 100%; }
-      .header { padding: 1rem 0; }
-      .content { padding: 0; }
-      .actions { display: none; }
-      table { font-size: 10pt; }
-      th, td { padding: 8px 10px; }
+      body {
+        padding: 0;
+        background-color: #fff;
+      }
+
+      .container {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        max-width: 100%;
+      }
+
+      .header {
+        padding: 1rem 0;
+      }
+
+      .content {
+        padding: 0;
+      }
+
+      .actions {
+        display: none;
+      }
+
+      table {
+        font-size: 10pt;
+      }
+
+      th,
+      td {
+        padding: 8px 10px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="header">
@@ -84,21 +151,70 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td>Membersihkan sumur</td><td>Sumur belakang rumah, air terlihat keruh</td><td></td><td></td></tr>
-          <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td>1</td>
+            <td>Membersihkan sumur</td>
+            <td>Sumur belakang rumah, air terlihat keruh</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </div>
     <div class="actions">
       <button onclick="window.print()" class="btn">Cetak atau Simpan sebagai PDF</button>
+      <a href="../index.html" style="margin-left: 1rem; color: #666; text-decoration: none;">Kembali ke Beranda</a>
     </div>
   </div>
 </body>
-</html>
 
+</html>

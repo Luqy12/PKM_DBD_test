@@ -1,0 +1,409 @@
+﻿<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard Analytics â€” Bersih Itu Patriotik</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="manifest" href="../manifest.json"><link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .metric-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .metric-trend {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .trend-up {
+            color: #D52A3A;
+        }
+
+        .trend-down {
+            color: #27AE60;
+        }
+
+        .trend-neutral {
+            color: #6c757d;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-canvas {
+            height: 300px;
+        }
+
+        .activity-feed {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-time {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quick-stat {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+        }
+
+        .quick-stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #3B82F6;
+        }
+
+        .quick-stat-label {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+    </style>
+
+    <meta name="theme-color" content="#3B82F6">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div class="logo-box" aria-hidden="true">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4 5v6.09c0 4.94 3.42 9.26 8 10.91c4.58-1.65 8-6.08 8-10.91V5l-8-3z" fill="#fff"
+                            fill-opacity="0.3"></path>
+                        <path d="M11 7h2v4h4v2h-4v4h-2v-4H7v-2h4V7z" fill="#fff"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="site-title">Bersih Itu Patriotik</h1>
+                    <p class="tagline">Gerakan Cinta Tanah Air â€” Lingkungan Bebas DBD</p>
+                </div>
+            </div>
+
+            <button id="navToggle" class="nav-toggle" aria-label="Buka menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav id="mainNav" class="nav">
+                <a href="../index.html" class="nav-link">Beranda</a>
+                <a href="about.html" class="nav-link">Tentang DBD</a>
+                <a href="3m.html" class="nav-link">3M &amp; Praktik</a>
+                <a href="program.html" class="nav-link">Program</a>
+                <a href="stats.html" class="nav-link">Statistik</a>
+                <a href="dashboard.html" class="nav-link is-active">Dashboard</a>
+                <a href="reports.html" class="nav-link">Laporan</a>
+                <a href="lapor.html" class="nav-link nav-cta">Lapor Baru</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 2rem; margin-bottom: 3rem;">
+        <div style="margin-bottom: 2rem;">
+            <h2 style="margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                Dashboard Analytics
+            </h2>
+            <p style="color: #6c757d; margin: 0;">Monitor aktivitas pencegahan DBD secara real-time</p>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="dashboard-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div>
+                        <p class="metric-label">Total Laporan</p>
+                        <h3 class="metric-value" id="totalReports">0</h3>
+                        <p class="metric-trend trend-neutral" id="trendReports">-</p>
+                    </div>
+                    <div class="metric-icon" style="background: #e7f3ff;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div>
+                        <p class="metric-label">Prioritas Tinggi</p>
+                        <h3 class="metric-value" style="color: #D52A3A;" id="highPriority">0</h3>
+                        <p class="metric-trend trend-up" id="trendHigh">Perlu tindakan segera</p>
+                    </div>
+                    <div class="metric-icon" style="background: #ffe7e7;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D52A3A" stroke-width="2">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div>
+                        <p class="metric-label">Terverifikasi</p>
+                        <h3 class="metric-value" style="color: #27AE60;" id="verified">0</h3>
+                        <p class="metric-trend trend-down" id="trendVerified">-</p>
+                    </div>
+                    <div class="metric-icon" style="background: #d4edda;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div>
+                        <p class="metric-label">Response Rate</p>
+                        <h3 class="metric-value" style="color: #F39C12;" id="responseRate">0%</h3>
+                        <p class="metric-trend trend-neutral" id="trendResponse">-</p>
+                    </div>
+                    <div class="metric-icon" style="background: #fff3cd;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="quick-stats">
+            <div class="quick-stat">
+                <div class="quick-stat-value" id="qsJentik">0</div>
+                <div class="quick-stat-label"
+                    style="display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+                        <circle cx="12" cy="8" r="3" />
+                        <path d="M12 11v4" />
+                        <path d="M8 15h8" />
+                    </svg>
+                    Temuan Jentik
+                </div>
+            </div>
+            <div class="quick-stat">
+                <div class="quick-stat-value" id="qsKasus">0</div>
+                <div class="quick-stat-label"
+                    style="display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                    Kasus DBD
+                </div>
+            </div>
+            <div class="quick-stat">
+                <div class="quick-stat-value" id="qsLingkungan">0</div>
+                <div class="quick-stat-label"
+                    style="display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                    </svg>
+                    Lingkungan Berisiko
+                </div>
+            </div>
+            <div class="quick-stat">
+                <div class="quick-stat-value" id="qsLainnya">0</div>
+                <div class="quick-stat-label"
+                    style="display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                    </svg>
+                    Lainnya
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="chart-container">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                    Trend Laporan Mingguan
+                </h3>
+                <div class="chart-canvas">
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 2 L12 12 L17 17" />
+                    </svg>
+                    Distribusi Kategori
+                </h3>
+                <div class="chart-canvas">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                    <line x1="12" y1="20" x2="12" y2="10" />
+                    <line x1="18" y1="20" x2="18" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="16" />
+                </svg>
+                Status Penanganan
+            </h3>
+            <div class="chart-canvas">
+                <canvas id="statusChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="activity-feed">
+            <h3 style="margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+                Aktivitas Terbaru
+            </h3>
+            <div id="activityList">
+                <p class="muted" style="text-align: center; padding: 2rem;">Belum ada aktivitas</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Bersih Itu Patriotik â€” Tim PKM. Dashboard analytics real-time.</p>
+        </div>
+    </footer>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main scripts -->
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>
+

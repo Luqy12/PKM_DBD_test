@@ -44,22 +44,45 @@
       const name = (document.getElementById('r_name')?.value || '').trim() || 'Anonim';
       const address = (document.getElementById('r_address')?.value || '').trim();
       const note = (document.getElementById('r_note')?.value || '').trim();
+      const category = document.getElementById('r_category')?.value || 'lainnya';
+      const priority = document.getElementById('r_priority')?.value || 'medium';
+
       if (!address || !note) {
         showToast('Alamat dan keterangan wajib diisi.');
         return;
       }
 
-      const email = 'mikutannakano@gmail.com';
-      const subject = `Laporan Warga: Jentik/Kasus DBD - ${address}`;
-      
-      // Membuat URL absolut ke poster agar bisa diakses dari email
-      const posterUrl = new URL('asset/Poster Waspada Demam Berdarah PKM_page-0001.jpg', window.location.href).href;
+      // Save to new localStorage structure for reports system
+      try {
+        const reports = JSON.parse(localStorage.getItem('pkm_dbd_reports') || '[]');
+        const newReport = {
+          id: 'RPT-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
+          timestamp: Date.now(),
+          name: name,
+          address: address,
+          category: category,
+          priority: priority,
+          status: 'pending',
+          note: note
+        };
+        reports.unshift(newReport);
+        localStorage.setItem('pkm_dbd_reports', JSON.stringify(reports));
 
-      const body = `
+        showToast('✓ Laporan berhasil disimpan! Lihat di halaman Laporan.');
+
+        // Optional: Also send via email
+        const sendEmail = confirm('Laporan sudah tersimpan.\n\nApakah Anda juga ingin mengirim via email?');
+        if (sendEmail) {
+          const email = 'mikutannakano@gmail.com';
+          const subject = `Laporan ${category.toUpperCase()} [${priority.toUpperCase()}]: ${address}`;
+
+          const body = `
 ========================================
    LAPORAN WARGA - PENCEGAHAN DBD
    Program PKM "Bersih Itu Patriotik"
 ========================================
+
+ID LAPORAN: ${newReport.id}
 
 Yth. Tim PKM,
 
@@ -75,6 +98,12 @@ Berikut adalah laporan yang dikirimkan oleh warga melalui situs web:
 - ALAMAT/LOKASI:
   ${address}
 
+- KATEGORI:
+  ${category.toUpperCase()}
+
+- PRIORITAS:
+  ${priority.toUpperCase()}
+
 - KETERANGAN:
   ${note}
 
@@ -82,20 +111,29 @@ Berikut adalah laporan yang dikirimkan oleh warga melalui situs web:
 
 Laporan ini dibuat pada: ${new Date().toLocaleString('id-ID', { dateStyle: 'full', timeStyle: 'long' })}
 
-Sebagai referensi, berikut adalah tautan untuk melihat poster kampanye resmi:
-${posterUrl}
-
 Terima kasih atas perhatian dan tindak lanjutnya.
 
 Hormat kami,
 Sistem Pelaporan Warga
-      `.trim().replace(/(\r\n|\n|\r)/gm, "\n"); // Menormalkan baris baru
+          `.trim().replace(/(\r\n|\n|\r)/gm, "\n");
 
-      // Buka tab baru langsung ke antarmuka compose Gmail
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.open(gmailUrl, '_blank');
-      
+          const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.open(gmailUrl, '_blank');
+        }
+      } catch (error) {
+        console.error('Error saving report:', error);
+        showToast('❌ Gagal menyimpan laporan. Silakan coba lagi.');
+        return;
+      }
+
       reportForm.reset();
+
+      // Redirect ke halaman laporan setelah 2 detik
+      setTimeout(() => {
+        if (confirm('Ingin melihat semua laporan sekarang?')) {
+          window.location.href = 'reports.html';
+        }
+      }, 2000);
     });
   }
 
@@ -250,80 +288,152 @@ Sistem Pelaporan Warga
   function generateMockBMKGData() {
     return [
       // 2023
-      { year: 2023, month: 1, cases: 118, humidity: 79, rhSuitability: 0.54, aiPrediction: 21, risk: 'Sedang',
-        summary: 'Awal musim hujan, lakukan 3M Plus intensif di rumah.' },
-      { year: 2023, month: 2, cases: 132, humidity: 80, rhSuitability: 0.58, aiPrediction: 24, risk: 'Sedang',
-        summary: 'Kelembaban naik, perhatikan bak mandi dan talang air.' },
-      { year: 2023, month: 3, cases: 158, humidity: 82, rhSuitability: 0.62, aiPrediction: 27, risk: 'Sedang',
-        summary: 'Kasus meningkat, aktifkan kader jumantik lingkungan.' },
-      { year: 2023, month: 4, cases: 146, humidity: 81, rhSuitability: 0.60, aiPrediction: 26, risk: 'Sedang',
-        summary: 'Kegiatan bersih lingkungan tiap akhir pekan tetap dijaga.' },
-      { year: 2023, month: 5, cases: 172, humidity: 83, rhSuitability: 0.66, aiPrediction: 29, risk: 'Sedang',
-        summary: 'Prediksi AI mendekati waspada, distribusikan larvasida.' },
-      { year: 2023, month: 6, cases: 196, humidity: 84, rhSuitability: 0.70, aiPrediction: 32, risk: 'Tinggi',
-        summary: 'Perlu monitoring jentik serentak bersama RT/RW.' },
-      { year: 2023, month: 7, cases: 228, humidity: 85, rhSuitability: 0.74, aiPrediction: 35, risk: 'Tinggi',
-        summary: 'Kondisi lembab, fokus cek tempat penampungan besar.' },
-      { year: 2023, month: 8, cases: 214, humidity: 84, rhSuitability: 0.72, aiPrediction: 34, risk: 'Tinggi',
-        summary: 'Lanjutkan kerja bakti dan pelaporan digital warga.' },
-      { year: 2023, month: 9, cases: 206, humidity: 83, rhSuitability: 0.69, aiPrediction: 31, risk: 'Sedang',
-        summary: 'Kasus turun perlahan, tetap pantau pot dan dispenser.' },
-      { year: 2023, month: 10, cases: 184, humidity: 82, rhSuitability: 0.65, aiPrediction: 28, risk: 'Sedang',
-        summary: 'Musim peralihan, saluran air harus bersih.' },
-      { year: 2023, month: 11, cases: 166, humidity: 81, rhSuitability: 0.60, aiPrediction: 25, risk: 'Sedang',
-        summary: 'Penyuluhan sekolah efektifkan gerakan Jumat Bersih.' },
-      { year: 2023, month: 12, cases: 152, humidity: 80, rhSuitability: 0.57, aiPrediction: 23, risk: 'Sedang',
-        summary: 'Menjelang liburan, cek kembali roof gutter rumah.' },
+      {
+        year: 2023, month: 1, cases: 118, humidity: 79, rhSuitability: 0.54, aiPrediction: 21, risk: 'Sedang',
+        summary: 'Awal musim hujan, lakukan 3M Plus intensif di rumah.'
+      },
+      {
+        year: 2023, month: 2, cases: 132, humidity: 80, rhSuitability: 0.58, aiPrediction: 24, risk: 'Sedang',
+        summary: 'Kelembaban naik, perhatikan bak mandi dan talang air.'
+      },
+      {
+        year: 2023, month: 3, cases: 158, humidity: 82, rhSuitability: 0.62, aiPrediction: 27, risk: 'Sedang',
+        summary: 'Kasus meningkat, aktifkan kader jumantik lingkungan.'
+      },
+      {
+        year: 2023, month: 4, cases: 146, humidity: 81, rhSuitability: 0.60, aiPrediction: 26, risk: 'Sedang',
+        summary: 'Kegiatan bersih lingkungan tiap akhir pekan tetap dijaga.'
+      },
+      {
+        year: 2023, month: 5, cases: 172, humidity: 83, rhSuitability: 0.66, aiPrediction: 29, risk: 'Sedang',
+        summary: 'Prediksi AI mendekati waspada, distribusikan larvasida.'
+      },
+      {
+        year: 2023, month: 6, cases: 196, humidity: 84, rhSuitability: 0.70, aiPrediction: 32, risk: 'Tinggi',
+        summary: 'Perlu monitoring jentik serentak bersama RT/RW.'
+      },
+      {
+        year: 2023, month: 7, cases: 228, humidity: 85, rhSuitability: 0.74, aiPrediction: 35, risk: 'Tinggi',
+        summary: 'Kondisi lembab, fokus cek tempat penampungan besar.'
+      },
+      {
+        year: 2023, month: 8, cases: 214, humidity: 84, rhSuitability: 0.72, aiPrediction: 34, risk: 'Tinggi',
+        summary: 'Lanjutkan kerja bakti dan pelaporan digital warga.'
+      },
+      {
+        year: 2023, month: 9, cases: 206, humidity: 83, rhSuitability: 0.69, aiPrediction: 31, risk: 'Sedang',
+        summary: 'Kasus turun perlahan, tetap pantau pot dan dispenser.'
+      },
+      {
+        year: 2023, month: 10, cases: 184, humidity: 82, rhSuitability: 0.65, aiPrediction: 28, risk: 'Sedang',
+        summary: 'Musim peralihan, saluran air harus bersih.'
+      },
+      {
+        year: 2023, month: 11, cases: 166, humidity: 81, rhSuitability: 0.60, aiPrediction: 25, risk: 'Sedang',
+        summary: 'Penyuluhan sekolah efektifkan gerakan Jumat Bersih.'
+      },
+      {
+        year: 2023, month: 12, cases: 152, humidity: 80, rhSuitability: 0.57, aiPrediction: 23, risk: 'Sedang',
+        summary: 'Menjelang liburan, cek kembali roof gutter rumah.'
+      },
       // 2024
-      { year: 2024, month: 1, cases: 162, humidity: 80, rhSuitability: 0.58, aiPrediction: 24, risk: 'Sedang',
-        summary: 'Awal tahun, data stabil namun tetap giat pemantauan.' },
-      { year: 2024, month: 2, cases: 176, humidity: 81, rhSuitability: 0.62, aiPrediction: 26, risk: 'Sedang',
-        summary: 'Tambahkan inspeksi titik rawan di fasilitas umum.' },
-      { year: 2024, month: 3, cases: 205, humidity: 83, rhSuitability: 0.68, aiPrediction: 30, risk: 'Tinggi',
-        summary: 'Curah hujan tinggi, tingkatkan pengawasan sekolah.' },
-      { year: 2024, month: 4, cases: 190, humidity: 82, rhSuitability: 0.66, aiPrediction: 29, risk: 'Sedang',
-        summary: 'Fogging fokus dilaksanakan pada permintaan warga.' },
-      { year: 2024, month: 5, cases: 222, humidity: 84, rhSuitability: 0.72, aiPrediction: 33, risk: 'Tinggi',
-        summary: 'Kegiatan 3M massal perlu diperluas ke pasar tradisional.' },
-      { year: 2024, month: 6, cases: 248, humidity: 85, rhSuitability: 0.75, aiPrediction: 35, risk: 'Tinggi',
-        summary: 'Kelembaban mencapai puncak, jadwalkan evaluasi RT.' },
-      { year: 2024, month: 7, cases: 276, humidity: 86, rhSuitability: 0.78, aiPrediction: 37, risk: 'Tinggi',
-        summary: 'Peningkatan signifikan, aktifkan sistem peringatan dini.' },
-      { year: 2024, month: 8, cases: 258, humidity: 85, rhSuitability: 0.76, aiPrediction: 36, risk: 'Tinggi',
-        summary: 'Tetap lakukan penyuluhan door to door oleh kader.' },
-      { year: 2024, month: 9, cases: 244, humidity: 84, rhSuitability: 0.72, aiPrediction: 32, risk: 'Sedang',
-        summary: 'Mulai terjadi penurunan, pantau bak penampungan tinggi.' },
-      { year: 2024, month: 10, cases: 228, humidity: 83, rhSuitability: 0.69, aiPrediction: 30, risk: 'Sedang',
-        summary: 'Pelaporan warga masih penting untuk validasi data.' },
-      { year: 2024, month: 11, cases: 206, humidity: 82, rhSuitability: 0.65, aiPrediction: 27, risk: 'Sedang',
-        summary: 'Intensifkan lomba kawasan bebas jentik antar RT.' },
-      { year: 2024, month: 12, cases: 188, humidity: 81, rhSuitability: 0.60, aiPrediction: 25, risk: 'Sedang',
-        summary: 'Menjelang akhir tahun, jadwalkan penyemprotan fokus.' },
+      {
+        year: 2024, month: 1, cases: 162, humidity: 80, rhSuitability: 0.58, aiPrediction: 24, risk: 'Sedang',
+        summary: 'Awal tahun, data stabil namun tetap giat pemantauan.'
+      },
+      {
+        year: 2024, month: 2, cases: 176, humidity: 81, rhSuitability: 0.62, aiPrediction: 26, risk: 'Sedang',
+        summary: 'Tambahkan inspeksi titik rawan di fasilitas umum.'
+      },
+      {
+        year: 2024, month: 3, cases: 205, humidity: 83, rhSuitability: 0.68, aiPrediction: 30, risk: 'Tinggi',
+        summary: 'Curah hujan tinggi, tingkatkan pengawasan sekolah.'
+      },
+      {
+        year: 2024, month: 4, cases: 190, humidity: 82, rhSuitability: 0.66, aiPrediction: 29, risk: 'Sedang',
+        summary: 'Fogging fokus dilaksanakan pada permintaan warga.'
+      },
+      {
+        year: 2024, month: 5, cases: 222, humidity: 84, rhSuitability: 0.72, aiPrediction: 33, risk: 'Tinggi',
+        summary: 'Kegiatan 3M massal perlu diperluas ke pasar tradisional.'
+      },
+      {
+        year: 2024, month: 6, cases: 248, humidity: 85, rhSuitability: 0.75, aiPrediction: 35, risk: 'Tinggi',
+        summary: 'Kelembaban mencapai puncak, jadwalkan evaluasi RT.'
+      },
+      {
+        year: 2024, month: 7, cases: 276, humidity: 86, rhSuitability: 0.78, aiPrediction: 37, risk: 'Tinggi',
+        summary: 'Peningkatan signifikan, aktifkan sistem peringatan dini.'
+      },
+      {
+        year: 2024, month: 8, cases: 258, humidity: 85, rhSuitability: 0.76, aiPrediction: 36, risk: 'Tinggi',
+        summary: 'Tetap lakukan penyuluhan door to door oleh kader.'
+      },
+      {
+        year: 2024, month: 9, cases: 244, humidity: 84, rhSuitability: 0.72, aiPrediction: 32, risk: 'Sedang',
+        summary: 'Mulai terjadi penurunan, pantau bak penampungan tinggi.'
+      },
+      {
+        year: 2024, month: 10, cases: 228, humidity: 83, rhSuitability: 0.69, aiPrediction: 30, risk: 'Sedang',
+        summary: 'Pelaporan warga masih penting untuk validasi data.'
+      },
+      {
+        year: 2024, month: 11, cases: 206, humidity: 82, rhSuitability: 0.65, aiPrediction: 27, risk: 'Sedang',
+        summary: 'Intensifkan lomba kawasan bebas jentik antar RT.'
+      },
+      {
+        year: 2024, month: 12, cases: 188, humidity: 81, rhSuitability: 0.60, aiPrediction: 25, risk: 'Sedang',
+        summary: 'Menjelang akhir tahun, jadwalkan penyemprotan fokus.'
+      },
       // 2025
-      { year: 2025, month: 1, cases: 176, humidity: 80, rhSuitability: 0.60, aiPrediction: 26, risk: 'Sedang',
-        summary: 'Awal tahun 2025 terkendali, lanjutkan patroli jumantik.' },
-      { year: 2025, month: 2, cases: 194, humidity: 82, rhSuitability: 0.64, aiPrediction: 28, risk: 'Sedang',
-        summary: 'Koordinasi kelurahan untuk pendataan rumah kosong.' },
-      { year: 2025, month: 3, cases: 226, humidity: 84, rhSuitability: 0.70, aiPrediction: 32, risk: 'Tinggi',
-        summary: 'Potensi lonjakan, siapkan logistik fogging dan abate.' },
-      { year: 2025, month: 4, cases: 214, humidity: 83, rhSuitability: 0.68, aiPrediction: 31, risk: 'Sedang',
-        summary: 'Kampanye 3M di tempat ibadah terus diperkuat.' },
-      { year: 2025, month: 5, cases: 238, humidity: 84, rhSuitability: 0.73, aiPrediction: 34, risk: 'Tinggi',
-        summary: 'Libatkan karang taruna sebagai duta anti jentik.' },
-      { year: 2025, month: 6, cases: 264, humidity: 85, rhSuitability: 0.77, aiPrediction: 36, risk: 'Tinggi',
-        summary: 'Kelembaban tinggi, monitor wadah air darurat event besar.' },
-      { year: 2025, month: 7, cases: 294, humidity: 87, rhSuitability: 0.81, aiPrediction: 38, risk: 'Tinggi',
-        summary: 'Segmentasi wilayah prioritas untuk fogging terjadwal.' },
-      { year: 2025, month: 8, cases: 278, humidity: 86, rhSuitability: 0.79, aiPrediction: 37, risk: 'Tinggi',
-        summary: 'Pantau sumur gali dan toren tinggi di wilayah padat.' },
-      { year: 2025, month: 9, cases: 262, humidity: 85, rhSuitability: 0.75, aiPrediction: 34, risk: 'Tinggi',
-        summary: 'Tetap lakukan survei jentik mingguan oleh kader remaja.' },
-      { year: 2025, month: 10, cases: 248, humidity: 84, rhSuitability: 0.72, aiPrediction: 32, risk: 'Sedang',
-        summary: 'Penerapan gotong royong bulanan menjaga tren menurun.' },
-      { year: 2025, month: 11, cases: 232, humidity: 83, rhSuitability: 0.70, aiPrediction: 30, risk: 'Sedang',
-        summary: 'Sosialisasi akhir tahun untuk arus mudik warga dipersiapkan.' },
-      { year: 2025, month: 12, cases: 216, humidity: 82, rhSuitability: 0.66, aiPrediction: 28, risk: 'Sedang',
-        summary: 'Evaluasi tahunan dan perencanaan 2026 dimulai.' },
+      {
+        year: 2025, month: 1, cases: 176, humidity: 80, rhSuitability: 0.60, aiPrediction: 26, risk: 'Sedang',
+        summary: 'Awal tahun 2025 terkendali, lanjutkan patroli jumantik.'
+      },
+      {
+        year: 2025, month: 2, cases: 194, humidity: 82, rhSuitability: 0.64, aiPrediction: 28, risk: 'Sedang',
+        summary: 'Koordinasi kelurahan untuk pendataan rumah kosong.'
+      },
+      {
+        year: 2025, month: 3, cases: 226, humidity: 84, rhSuitability: 0.70, aiPrediction: 32, risk: 'Tinggi',
+        summary: 'Potensi lonjakan, siapkan logistik fogging dan abate.'
+      },
+      {
+        year: 2025, month: 4, cases: 214, humidity: 83, rhSuitability: 0.68, aiPrediction: 31, risk: 'Sedang',
+        summary: 'Kampanye 3M di tempat ibadah terus diperkuat.'
+      },
+      {
+        year: 2025, month: 5, cases: 238, humidity: 84, rhSuitability: 0.73, aiPrediction: 34, risk: 'Tinggi',
+        summary: 'Libatkan karang taruna sebagai duta anti jentik.'
+      },
+      {
+        year: 2025, month: 6, cases: 264, humidity: 85, rhSuitability: 0.77, aiPrediction: 36, risk: 'Tinggi',
+        summary: 'Kelembaban tinggi, monitor wadah air darurat event besar.'
+      },
+      {
+        year: 2025, month: 7, cases: 294, humidity: 87, rhSuitability: 0.81, aiPrediction: 38, risk: 'Tinggi',
+        summary: 'Segmentasi wilayah prioritas untuk fogging terjadwal.'
+      },
+      {
+        year: 2025, month: 8, cases: 278, humidity: 86, rhSuitability: 0.79, aiPrediction: 37, risk: 'Tinggi',
+        summary: 'Pantau sumur gali dan toren tinggi di wilayah padat.'
+      },
+      {
+        year: 2025, month: 9, cases: 262, humidity: 85, rhSuitability: 0.75, aiPrediction: 34, risk: 'Tinggi',
+        summary: 'Tetap lakukan survei jentik mingguan oleh kader remaja.'
+      },
+      {
+        year: 2025, month: 10, cases: 248, humidity: 84, rhSuitability: 0.72, aiPrediction: 32, risk: 'Sedang',
+        summary: 'Penerapan gotong royong bulanan menjaga tren menurun.'
+      },
+      {
+        year: 2025, month: 11, cases: 232, humidity: 83, rhSuitability: 0.70, aiPrediction: 30, risk: 'Sedang',
+        summary: 'Sosialisasi akhir tahun untuk arus mudik warga dipersiapkan.'
+      },
+      {
+        year: 2025, month: 12, cases: 216, humidity: 82, rhSuitability: 0.66, aiPrediction: 28, risk: 'Sedang',
+        summary: 'Evaluasi tahunan dan perencanaan 2026 dimulai.'
+      },
     ];
   }
 
@@ -966,3 +1076,13 @@ Sistem Pelaporan Warga
     setFilteredData(defaultSubset.length ? defaultSubset : monthlyData);
   });
 })();
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        const swPath = window.location.pathname.includes('/pages/') ? '../sw.js' : './sw.js';
+        navigator.serviceWorker.register(swPath)
+            .then(registration => console.log('SW registered: ', registration.scope))
+            .catch(err => console.log('SW registration failed: ', err));
+    });
+}

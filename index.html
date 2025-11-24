@@ -1,15 +1,16 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bersih Itu Patriotik — Sistem Informasi Pencegahan DBD</title>
+  <title>Bersih Itu Patriotik â€” Sistem Informasi Pencegahan DBD</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json"><link rel="stylesheet" href="assets/css/styles.css">
   <style>
     .section-header {
       text-align: center;
@@ -17,18 +18,23 @@
     }
   </style>
 
-  <meta name="theme-color" content="#0F8B6D">
+  <meta name="theme-color" content="#3B82F6">
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
         <div class="logo-box" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5v6.09c0 4.94 3.42 9.26 8 10.91c4.58-1.65 8-6.08 8-10.91V5l-8-3z" fill="#fff" fill-opacity="0.3"></path><path d="M11 7h2v4h4v2h-4v4h-2v-4H7v-2h4V7z" fill="#fff"></path></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 5v6.09c0 4.94 3.42 9.26 8 10.91c4.58-1.65 8-6.08 8-10.91V5l-8-3z" fill="#fff"
+              fill-opacity="0.3"></path>
+            <path d="M11 7h2v4h4v2h-4v4h-2v-4H7v-2h4V7z" fill="#fff"></path>
+          </svg>
         </div>
         <div>
           <h1 class="site-title">Bersih Itu Patriotik</h1>
-          <p class="tagline">Gerakan Cinta Tanah Air — Lingkungan Bebas DBD</p>
+          <p class="tagline">Gerakan Cinta Tanah Air â€” Lingkungan Bebas DBD</p>
         </div>
       </div>
 
@@ -38,11 +44,11 @@
 
       <nav id="mainNav" class="nav">
         <a href="index.html" class="nav-link is-active">Beranda</a>
-        <a href="about.html" class="nav-link">Tentang DBD</a>
-        <a href="3m.html" class="nav-link">3M &amp; Praktik</a>
-        <a href="program.html" class="nav-link">Program</a>
-        <a href="stats.html" class="nav-link">Statistik</a>
-        <a href="lapor.html" class="nav-link nav-cta">Lapor</a>
+        <a href="pages/about.html" class="nav-link">Tentang DBD</a>
+        <a href="pages/3m.html" class="nav-link">3M &amp; Praktik</a>
+        <a href="pages/program.html" class="nav-link">Program</a>
+        <a href="pages/stats.html" class="nav-link">Statistik</a>
+        <a href="pages/lapor.html" class="nav-link nav-cta">Lapor</a>
       </nav>
     </div>
   </header>
@@ -50,13 +56,14 @@
   <section id="hero" class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <span class="eyebrow">Gerakan PKM • 2025</span>
+        <span class="eyebrow">Gerakan PKM â€¢ 2025</span>
         <h2 class="hero-title">Lindungi Keluarga dari DBD Mulai Hari Ini</h2>
-        <p class="lead">Pantau risiko Demam Berdarah berbasis data BMKG, lakukan aksi 3M Plus, dan bangun lingkungan yang tangguh bersama warga.</p>
+        <p class="lead">Pantau risiko Demam Berdarah berbasis data BMKG, lakukan aksi 3M Plus, dan bangun lingkungan
+          yang tangguh bersama warga.</p>
 
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#situation">Lihat Status Terkini</a>
-          <a class="btn btn-outline" href="lapor.html">Lapor Temuan</a>
+          <a class="btn btn-primary" href="#dashboard">Lihat Dashboard</a>
+          <a class="btn btn-outline" href="pages/lapor.html">Lapor Temuan</a>
         </div>
 
         <div class="quick-actions">
@@ -66,44 +73,315 @@
             <li>Tutup rapat semua wadah air</li>
             <li>Daur ulang barang bekas</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Access Section -->
+  <section style="background: #3B82F6; padding: 3rem 0; margin-top: -2rem;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="color: white; margin: 0 0 0.5rem 0;">Akses Cepat Fitur</h2>
+        <p style="color: rgba(255,255,255,0.9); margin: 0;">Klik tombol di bawah untuk mengakses semua fitur website</p>
+      </div>
+
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto;">
+        <!-- Dashboard Button -->
+        <a href="#dashboard"
+          style="background: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
+          onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
+          <div
+            style="width: 48px; height: 48px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+          </div>
+          <h3 style="margin: 0 0 0.5rem 0; color: #3B82F6;">Dashboard</h3>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Monitoring real-time laporan warga</p>
+        </a>
+
+        <!-- Lapor Button -->
+        <a href="pages/lapor.html"
+          style="background: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
+          onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
+          <div
+            style="width: 48px; height: 48px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <h3 style="margin: 0 0 0.5rem 0; color: #3B82F6;">Lapor Temuan</h3>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Laporkan jentik atau kasus DBD</p>
+        </a>
+
+        <!-- Reports Button -->
+        <a href="pages/reports.html"
+          style="background: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
+          onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
+          <div
+            style="width: 48px; height: 48px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="12" y1="18" x2="12" y2="12" />
+              <line x1="9" y1="15" x2="15" y2="15" />
+            </svg>
+          </div>
+          <h3 style="margin: 0 0 0.5rem 0; color: #3B82F6;">Lihat Laporan</h3>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Kelola & export ke Excel/CSV</p>
+        </a>
+
+        <!-- Quiz Button -->
+        <a href="pages/quiz.html"
+          style="background: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
+          onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
+          <div
+            style="width: 48px; height: 48px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+            </svg>
+          </div>
+          <h3 style="margin: 0 0 0.5rem 0; color: #3B82F6;">Quiz Edukasi</h3>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Uji pengetahuan pencegahan DBD</p>
+        </a>
+
+        <!-- Stats Button -->
+        <a href="pages/stats.html"
+          style="background: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
+          onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
+          <div
+            style="width: 48px; height: 48px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <h3 style="margin: 0 0 0.5rem 0; color: #3B82F6;">Statistik</h3>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Data kasus DBD & peta BMKG</p>
+        </a>
+
+        <!-- 3M Guide Button -->
+        <a href="pages/3m.html"
+          style="background: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
+          onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
+          <div
+            style="width: 48px; height: 48px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+            </svg>
+          </div>
+          <h3 style="margin: 0 0 0.5rem 0; color: #3B82F6;">Panduan 3M</h3>
+          <p style="margin: 0; color: #6c757d; font-size: 0.9rem;">Menguras, Menutup, Mendaur ulang</p>
+        </a>
+      </div>
     </div>
   </section>
 
   <main class="container main-grid">
-    <section id="situation" class="card wide-card card-reveal">
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard" class="card wide-card card-reveal">
       <div class="section-header">
-        <span class="section-eyebrow">Monitoring Cepat</span>
+        <span class="section-eyebrow">Real-time Monitoring</span>
         <div>
-          <h2>Status DBD Terkini</h2>
-          <p>Ringkasan data kasus dan kelembaban dari dashboard publik <a href="https://www.cegahdbd.com/tentang-dbd" target="_blank" rel="noopener">CegahDBD</a> diperkaya laporan warga di lingkungan Anda.</p>
+          <h2 style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+            Dashboard Analytics
+          </h2>
+          <p>Pantau aktivitas pencegahan DBD, statistik laporan warga, dan tren kasus terkini di lingkungan Anda.</p>
         </div>
       </div>
 
-      <div class="insights-grid">
-        <article class="insight-card">
-          <h3>Kasus Bulan Ini</h3>
-          <p class="insight-value" id="metricCases">—</p>
-          <p class="insight-subtext" id="metricCasesDelta">Memuat data...</p>
-        </article>
-        <article class="insight-card">
-          <h3>Kelembaban Rata-rata</h3>
-          <p class="insight-value" id="metricHumidity">—</p>
-          <p class="insight-subtext" id="metricHumidityNote">Memuat data...</p>
-        </article>
-        <article class="insight-card">
-          <h3>Level Risiko</h3>
-          <p class="insight-value" id="metricRisk">—</p>
-          <p class="insight-subtext" id="metricRiskNote">Memuat data...</p>
-        </article>
+      <!-- Key Metrics -->
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border: 1px solid #e9ecef;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+            <div>
+              <p style="font-size: 0.85rem; color: #6c757d; font-weight: 600; text-transform: uppercase; margin: 0;">
+                Total Laporan</p>
+              <h3 id="totalReports" style="font-size: 2rem; margin: 0.5rem 0; font-weight: 700;">0</h3>
+              <p id="trendReports" style="font-size: 0.85rem; color: #6c757d; margin: 0;">-</p>
+            </div>
+            <div
+              style="width: 40px; height: 40px; background: #e7f3ff; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border: 1px solid #e9ecef;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+            <div>
+              <p style="font-size: 0.85rem; color: #6c757d; font-weight: 600; text-transform: uppercase; margin: 0;">
+                Prioritas Tinggi</p>
+              <h3 id="highPriority" style="font-size: 2rem; margin: 0.5rem 0; font-weight: 700; color: #D52A3A;">0</h3>
+              <p id="trendHigh" style="font-size: 0.85rem; color: #D52A3A; margin: 0;">Perlu tindakan</p>
+            </div>
+            <div
+              style="width: 40px; height: 40px; background: #ffe7e7; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D52A3A" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border: 1px solid #e9ecef;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+            <div>
+              <p style="font-size: 0.85rem; color: #6c757d; font-weight: 600; text-transform: uppercase; margin: 0;">
+                Terverifikasi</p>
+              <h3 id="verified" style="font-size: 2rem; margin: 0.5rem 0; font-weight: 700; color: #27AE60;">0</h3>
+              <p id="trendVerified" style="font-size: 0.85rem; color: #27AE60; margin: 0;">-</p>
+            </div>
+            <div
+              style="width: 40px; height: 40px; background: #d4edda; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="sparkline-panel">
-        <div>
-          <h3>Pergerakan 6 Bulan Terakhir</h3>
-          <p class="muted small" id="trendNote">Menunggu data terbaru...</p>
+      <!-- Quick Stats by Category -->
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+        <div
+          style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px;">
+          <div id="qsJentik" style="font-size: 1.75rem; font-weight: 700; color: #3B82F6;">0</div>
+          <div
+            style="font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem; display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+              <circle cx="12" cy="8" r="3" />
+              <path d="M12 11v4" />
+              <path d="M8 15h8" />
+            </svg>
+            Temuan Jentik
+          </div>
         </div>
-        <div class="sparkline-chart">
-          <canvas id="sparklineChart" height="80"></canvas>
+        <div
+          style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px;">
+          <div id="qsKasus" style="font-size: 1.75rem; font-weight: 700; color: #3B82F6;">0</div>
+          <div
+            style="font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem; display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+            Kasus DBD
+          </div>
+        </div>
+        <div
+          style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px;">
+          <div id="qsLingkungan" style="font-size: 1.75rem; font-weight: 700; color: #3B82F6;">0</div>
+          <div
+            style="font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem; display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+            </svg>
+            Lingkungan Berisiko
+          </div>
+        </div>
+        <div
+          style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px;">
+          <div id="qsLainnya" style="font-size: 1.75rem; font-weight: 700; color: #3B82F6;">0</div>
+          <div
+            style="font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem; display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+            </svg>
+            Lainnya
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        <div style="background: white; padding: 1rem; border-radius: 12px; border: 1px solid #e9ecef;">
+          <h3
+            style="margin-top: 0; font-size: 1.1rem; color: #3B82F6; display: flex; align-items: center; gap: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+            Trend Laporan Mingguan
+          </h3>
+          <div style="height: 250px;">
+            <canvas id="weeklyChart"></canvas>
+          </div>
+        </div>
+
+        <div style="background: white; padding: 1rem; border-radius: 12px; border: 1px solid #e9ecef;">
+          <h3
+            style="margin-top: 0; font-size: 1.1rem; color: #3B82F6; display: flex; align-items: center; gap: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2 L12 12 L17 17" />
+            </svg>
+            Distribusi Kategori
+          </h3>
+          <div style="height: 250px;">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Chart -->
+      <div
+        style="background: white; padding: 1rem; border-radius: 12px; border: 1px solid #e9ecef; margin-bottom: 2rem;">
+        <h3 style="margin-top: 0; font-size: 1.1rem; color: #3B82F6; display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+            <line x1="12" y1="20" x2="12" y2="10" />
+            <line x1="18" y1="20" x2="18" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="16" />
+          </svg>
+          Status Penanganan
+        </h3>
+        <div style="height: 250px;">
+          <canvas id="statusChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border: 1px solid #e9ecef;">
+        <h3
+          style="margin-top: 0; margin-bottom: 1rem; color: #3B82F6; display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          Aktivitas Terbaru
+        </h3>
+        <div id="activityList">
+          <p class="muted" style="text-align: center; padding: 1rem;">Belum ada aktivitas</p>
         </div>
       </div>
     </section>
@@ -113,7 +391,9 @@
         <span class="section-eyebrow">Berita Terkini</span>
         <div>
           <h2>Kabar Kesehatan dari Kemenkes</h2>
-          <p>Artikel terbaru seputar pencegahan, edukasi, dan inovasi pengendalian DBD yang dikurasi dari portal <a href="https://ayosehat.kemkes.go.id/topik/demam-berdarah-dengue" target="_blank" rel="noopener">AyoSehat Kementerian Kesehatan</a>.</p>
+          <p>Artikel terbaru seputar pencegahan, edukasi, dan inovasi pengendalian DBD yang dikurasi dari portal <a
+              href="https://ayosehat.kemkes.go.id/topik/demam-berdarah-dengue" target="_blank" rel="noopener">AyoSehat
+              Kementerian Kesehatan</a>.</p>
         </div>
       </div>
       <div class="news-grid" id="dbdNewsList" aria-live="polite">
@@ -125,66 +405,87 @@
       <div class="section-header" style="text-align: center; justify-content: center; flex-direction: column;">
         <span class="section-eyebrow">Sorotan Wilayah</span>
         <div>
-          <h2>Peta Risiko & Rekomendasi Aksi</h2>
-          <p>Prioritas intervensi dibuat berdasarkan prakiraan angka insiden, kelembaban udara, dan bobot kepadatan wilayah. Gunakan data ini untuk merencanakan jadwal fogging, inspeksi jentik, dan edukasi warga.</p>
+          <h2>Peta Risiko &amp; Rekomendasi Aksi</h2>
+          <p>Prioritas intervensi dibuat berdasarkan prakiraan angka insiden, kelembaban udara, dan bobot kepadatan
+            wilayah. Gunakan data ini untuk merencanakan jadwal fogging, inspeksi jentik, dan edukasi warga.</p>
         </div>
       </div>
       <div class="regional-matrix" id="regionalMatrix">
         <!-- Diisi via JavaScript -->
       </div>
-      <p class="muted small">Status dihitung dari data BMKG simulasi + laporan warga. Risiko tinggi berarti perlu respon respon cepat: fogging fokus, pembagian larvasida, dan patroli jumantik.</p>
+      <p class="muted small">Status dihitung dari data BMKG simulasi + laporan warga. Risiko tinggi berarti perlu respon
+        respon cepat: fogging fokus, pembagian larvasida, dan patroli jumantik.</p>
     </section>
 
     <aside class="card sidebar card-reveal">
       <div class="card-header">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
         <h3>Aksi Utama 3M Plus</h3>
       </div>
       <p class="muted small">Lakukan langkah-langkah ini setiap minggu untuk memutus siklus hidup nyamuk.</p>
       <ul class="action-list">
-        <li><strong>Menguras</strong> & sikat tempat penampungan air.</li>
+        <li><strong>Menguras</strong> &amp; sikat tempat penampungan air.</li>
         <li><strong>Menutup</strong> rapat semua wadah air.</li>
         <li><strong>Mendaur Ulang</strong> barang bekas.</li>
-        <li><strong>Plus:</strong> Gunakan kelambu & tanam pengusir nyamuk.</li>
+        <li><strong>Plus:</strong> Gunakan kelambu &amp; tanam pengusir nyamuk.</li>
       </ul>
-      <a href="3m.html" class="btn btn-subtle full" style="margin-top: 1rem;">Lihat Panduan Lengkap</a>
+      <a href="pages/3m.html" class="btn btn-subtle full" style="margin-top: 1rem;">Lihat Panduan Lengkap</a>
     </aside>
 
     <section id="program" class="card card-reveal">
       <div class="card-header">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+        </svg>
         <h3>Program Unggulan</h3>
       </div>
       <ul class="action-list">
-        <li>Edukasi & Kunjungan Door-to-Door</li>
+        <li>Edukasi &amp; Kunjungan Door-to-Door</li>
         <li>Pelatihan Kader Jumantik Remaja</li>
-        <li>Gerakan Jumat Bersih & Kerja Bakti</li>
+        <li>Gerakan Jumat Bersih &amp; Kerja Bakti</li>
         <li>Digitalisasi Pelaporan via Situs Web</li>
       </ul>
-      <a href="program.html" class="btn btn-subtle full" style="margin-top: 1rem;">Pelajari Visi & Misi Kami</a>
+      <a href="pages/program.html" class="btn btn-subtle full" style="margin-top: 1rem;">Pelajari Visi &amp; Misi Kami</a>
     </section>
 
     <section class="card card-reveal" id="resources">
       <div class="card-header">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
-        <h3>Materi & Unduhan</h3>
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+        </svg>
+        <h3>Materi &amp; Unduhan</h3>
       </div>
       <ul class="action-list">
-        <li><a href="poster-a4.html" target="_blank">Cetak Poster Kampanye A4</a></li>
-        <li><a href="logbook.html" target="_blank">Unduh Template Logbook PSN</a></li>
-        <li><a href="https://www.cegahdbd.com/tentang-dbd" target="_blank" rel="noopener">Buka Dashboard CegahDBD</a></li>
+        <li><a href="pages/poster-a4.html" target="_blank">Cetak Poster Kampanye A4</a></li>
+        <li><a href="pages/logbook.html" target="_blank">Unduh Template Logbook PSN</a></li>
+        <li><a href="https://www.cegahdbd.com/tentang-dbd" target="_blank" rel="noopener">Buka Dashboard CegahDBD</a>
+        </li>
         <li><a href="https://iklim.bmkg.go.id/id/dbdklim/" target="_blank" rel="noopener">Buka Peta Iklim BMKG</a></li>
       </ul>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Bersih Itu Patriotik — Tim PKM. Semua informasi berbasis data publik BMKG dan edukasi kesehatan masyarakat.</p>
-    </div>
-  </footer>
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 Bersih Itu Patriotik â€” Tim PKM. Semua informasi berbasis data publik BMKG dan edukasi kesehatan
+          masyarakat.</p>
+      </div>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
+
 </html>
+
+

@@ -112,7 +112,7 @@ a:hover{color: var(--primary-dark); text-decoration:underline}
 .nav.open .nav-link{width:100%}
 .nav.open .nav-cta{justify-content:center;text-align:center}
 .nav.open .nav-link {
-  color: var(--primary-dark); /* Mengubah warna teks menjadi biru tua */
+  color: var(--primary-dark); /* Mengubah warna teks menjadi biru tua agar terlihat */
 }
 .nav.open .nav-link:hover { color: var(--primary); background: var(--surface-alt); }
 .nav.open .nav-link.is-active { color: var(--primary-dark); background: var(--surface-alt); font-weight: 700; }
@@ -133,7 +133,7 @@ a:hover{color: var(--primary-dark); text-decoration:underline}
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:0.08em;
-  color:var(--primary-dark);
+  color:var(--primary-dark);   
 }
 .hero-title{margin:12px 0 16px;font-size:2.8rem;line-height:1.2; letter-spacing: -0.04em; color: var(--ink);}
 .lead{margin:0 0 24px;font-size:1.15rem;color:#475569;max-width:65ch; margin-left: auto; margin-right: auto; text-align: justify;}

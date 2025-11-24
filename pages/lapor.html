@@ -1,0 +1,266 @@
+﻿<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lapor â€” Bersih Itu Patriotik</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="manifest" href="../manifest.json"><link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    .option-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .option-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .option-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .option-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .option-card h3 {
+      margin: 0 0 1rem 0;
+      color: #3B82F6;
+    }
+
+    .option-card p {
+      color: #6c757d;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    #formContainer {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      display: none;
+    }
+
+    #formContainer.active {
+      display: block;
+    }
+
+    .back-btn {
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      color: #3B82F6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <meta name="theme-color" content="#3B82F6">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-box" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 5v6.09c0 4.94 3.42 9.26 8 10.91c4.58-1.65 8-6.08 8-10.91V5l-8-3z" fill="#fff"
+              fill-opacity="0.3"></path>
+            <path d="M11 7h2v4h4v2h-4v4h-2v-4H7v-2h4V7z" fill="#fff"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="site-title">Bersih Itu Patriotik</h1>
+          <p class="tagline">Gerakan Cinta Tanah Air â€” Lingkungan Bebas DBD</p>
+        </div>
+      </div>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" class="nav">
+        <a href="../index.html" class="nav-link">Beranda</a>
+        <a href="about.html" class="nav-link">Tentang DBD</a>
+        <a href="3m.html" class="nav-link">3M &amp; Praktik</a>
+        <a href="program.html" class="nav-link">Program</a>
+        <a href="stats.html" class="nav-link">Statistik</a>
+        <a href="reports.html" class="nav-link">Laporan</a>
+        <a href="lapor.html" class="nav-link nav-cta is-active">Lapor</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top: 2rem; margin-bottom: 3rem;">
+    <section class="card wide-card">
+      <div class="section-header" style="text-align: center; flex-direction: column; align-items: center;">
+        <span class="section-eyebrow">Partisipasi Warga</span>
+        <div>
+          <h2>ðŸ“¢ Lapor Temuan Jentik atau Kasus DBD</h2>
+          <p>Pilih salah satu cara pelaporan di bawah ini sesuai kemudahan Anda</p>
+        </div>
+      </div>
+
+      <!-- Option Cards -->
+      <div class="option-cards" id="optionCards">
+        <div class="option-card" onclick="window.reportsLapor.selectOption('gmail')">
+          <div class="option-icon" style="background: linear-gradient(135deg, #EA4335 0%, #C5221F 100%);">
+            âœ‰ï¸
+          </div>
+          <h3>Lapor via Gmail</h3>
+          <p>Kirim laporan langsung ke email koordinator dengan template yang sudah disediakan. Data otomatis tersimpan
+            ke sistem.</p>
+          <button class="btn btn-primary">Pilih Gmail</button>
+        </div>
+
+        <div class="option-card" onclick="window.reportsLapor.selectOption('gform')">
+          <div class="option-icon" style="background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);">
+            ðŸ“
+          </div>
+          <h3>Lapor via Google Form</h3>
+          <p>Isi formulir Google yang terstruktur. Data akan otomatis masuk ke Google Sheets untuk tracking.</p>
+          <button class="btn btn-primary">Pilih Google Form</button>
+        </div>
+      </div>
+
+      <!-- Gmail Form Container -->
+      <div id="formContainer">
+        <a href="javascript:void(0)" onclick="window.reportsLapor.backToOptions()" class="back-btn">â† Kembali ke
+          pilihan</a>
+
+        <div id="gmailForm">
+          <h3 style="margin-top: 0;">ðŸ“§ Form Laporan via Gmail</h3>
+          <p class="muted">Isi form di bawah, lalu klik tombol kirim untuk membuka Gmail dengan template yang sudah
+            terisi.</p>
+
+          <form id="reportForm" class="report-form">
+            <div class="form-group">
+              <label for="r_name">Nama Pelapor (Opsional)</label>
+              <input id="r_name" type="text" placeholder="Contoh: Budi Santoso" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="r_address">Alamat Lengkap / RT & RW <span style="color: red;">*</span></label>
+              <input id="r_address" type="text" placeholder="Contoh: Jl. Merdeka No. 10, RT 05 / RW 02" required
+                autocomplete="street-address" />
+            </div>
+            <div class="form-group">
+              <label for="r_category">Kategori Laporan <span style="color: red;">*</span></label>
+              <select id="r_category" required>
+                <option value="">Pilih kategori...</option>
+                <option value="jentik">ðŸ¦Ÿ Temuan Jentik</option>
+                <option value="kasus">ðŸ¥ Kasus/Gejala DBD</option>
+                <option value="lingkungan">ðŸŒ³ Lingkungan Berisiko</option>
+                <option value="lainnya">ðŸ“‹ Lainnya</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="r_priority">Tingkat Prioritas <span style="color: red;">*</span></label>
+              <select id="r_priority" required>
+                <option value="low">ðŸŸ¢ Rendah - Pemantauan rutin</option>
+                <option value="medium" selected>ðŸŸ¡ Sedang - Perlu perhatian</option>
+                <option value="high">ðŸ”´ Tinggi - Urgent, perlu tindakan segera</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="r_note">Detail Laporan <span style="color: red;">*</span></label>
+              <textarea id="r_note" rows="5" placeholder="Jelaskan lokasi temuan jentik atau gejala yang dialami..."
+                required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary full" style="padding: 16px; font-size: 1.1rem;">ðŸ“¨ Kirim via
+              Gmail</button>
+          </form>
+        </div>
+
+        <div id="gformInfo" style="display: none;">
+          <h3 style="margin-top: 0;">ðŸ“ Google Form</h3>
+          <p>Gunakan Google Form untuk pelaporan terstruktur. Data otomatis masuk ke Google Sheets.</p>
+
+          <a href="gform.html" target="_blank" class="btn btn-primary"
+            style="display: inline-block; margin-top: 1rem; padding: 16px 32px; font-size: 1.1rem;">
+            Buka Form Laporan â†’
+          </a>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+            <h4 style="margin-top: 0;">â„¹ï¸ Petunjuk Google Form:</h4>
+            <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.8;">
+              <li>Klik tombol di atas untuk membuka form</li>
+              <li>Isi semua field yang wajib (*)</li>
+              <li>Klik "Kirim Laporan" setelah selesai</li>
+              <li>Data otomatis tersimpan dan akan ditindaklanjuti</li>
+            </ul>
+            <p class="muted small" style="margin-top: 1rem;">
+              <strong>Note untuk Admin:</strong> Baca file <code>SETUP_GOOGLE_FORM.md</code> untuk cara setup integrasi
+              Google Sheets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Bersih Itu Patriotik â€” Tim PKM.</p>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <!-- Main scripts -->
+  <script src="../assets/js/scripts.js"></script>
+  <script>
+    // Laporan module
+    window.reportsLapor = {
+      selectOption: function (type) {
+        document.getElementById('optionCards').style.display = 'none';
+        document.getElementById('formContainer').classList.add('active');
+
+        if (type === 'gmail') {
+          document.getElementById('gmailForm').style.display = 'block';
+          document.getElementById('gformInfo').style.display = 'none';
+        } else if (type === 'gform') {
+          document.getElementById('gmailForm').style.display = 'none';
+          document.getElementById('gformInfo').style.display = 'block';
+        }
+      },
+
+      backToOptions: function () {
+        document.getElementById('optionCards').style.display = 'grid';
+        document.getElementById('formContainer').classList.remove('active');
+      }
+    };
+  </script>
+  <script src="../assets/js/theme.js"></script>
+</body>
+
+</html>
+

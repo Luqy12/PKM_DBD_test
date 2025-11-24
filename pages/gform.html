@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form - Laporan DBD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+        }
+
+        .form-header {
+            background: #3B82F6;
+            color: white;
+            padding: 2rem;
+        }
+
+        .form-header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .form-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            color: #202124;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        label .required {
+            color: #d93025;
+            margin-left: 4px;
+        }
+
+        .helper-text {
+            font-size: 0.75rem;
+            color: #5f6368;
+            margin-top: 0.25rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: none;
+            border-bottom: 1px solid #dadce0;
+            background: transparent;
+            color: #202124;
+            font-family: inherit;
+            transition: border-bottom 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-bottom: 2px solid #3B82F6;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            padding: 12px;
+        }
+
+        select {
+            cursor: pointer;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #3B82F6;
+        }
+
+        .radio-option label {
+            margin-bottom: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .submit-button {
+            background: #3B82F6;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-button:hover {
+            background: #1D4ED8;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .submit-button:active {
+            background: #1e40af;
+        }
+
+        .form-footer {
+            background: #f8f9fa;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: #5f6368;
+            font-size: 0.875rem;
+            border-top: 1px solid #dadce0;
+        }
+
+        .form-footer a {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 0;
+            }
+
+            .container {
+                border-radius: 0;
+            }
+
+            .form-body {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-footer {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-header">
+            <h1>ðŸ“‹ Laporan Temuan DBD</h1>
+            <p>Form pelaporan jentik nyamuk atau kasus DBD untuk Program PKM "Bersih Itu Patriotik"</p>
+        </div>
+
+        <div class="form-body">
+            <div id="successMessage" class="success-message">
+                <h3 style="margin-bottom: 0.5rem;">âœ“ Laporan Berhasil Dikirim!</h3>
+                <p>Terima kasih atas partisipasi Anda. Laporan telah tersimpan dan akan segera ditindaklanjuti.</p>
+            </div>
+
+            <!-- NOTE: Ini adalah template form standalone yang bisa digunakan TANPA setup Google Form -->
+            <!-- Data tetap tersimpan ke localStorage dan muncul di dashboard -->
+            <form id="gform" onsubmit="return handleSubmit(event);">
+
+                <div class="form-group">
+                    <label for="nama">
+                        Nama Lengkap <span class="helper-text">(Opsional)</span>
+                    </label>
+                    <input type="text" id="nama" placeholder="Contoh: Budi Santoso">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        Email <span class="helper-text">(Opsional)</span>
+                    </label>
+                    <input type="email" id="email" placeholder="email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">
+                        Alamat Lengkap / RT & RW <span class="required">*</span>
+                    </label>
+                    <input type="text" id="alamat" placeholder="Contoh: Jl. Merdeka No. 10, RT 05/RW 02" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="kategori">
+                        Kategori Laporan <span class="required">*</span>
+                    </label>
+                    <select id="kategori" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="jentik">ðŸ¦Ÿ Temuan Jentik Nyamuk</option>
+                        <option value="kasus">ðŸ¥ Kasus atau Gejala DBD</option>
+                        <option value="lingkungan">ðŸŒ³ Lingkungan Berisiko</option>
+                        <option value="lainnya">ðŸ“‹ Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Tingkat Prioritas <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="priority-low" name="prioritas" value="low" required>
+                            <label for="priority-low">ðŸŸ¢ Rendah - Pemantauan rutin</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="priority-medium" name="prioritas" value="medium" checked>
+                            <label for="priority-medium">ðŸŸ¡ Sedang - Perlu perhatian</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="priority-high" name="prioritas" value="high">
+                            <label for="priority-high">ðŸ”´ Tinggi - Urgent, perlu tindakan segera</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="keterangan">
+                        Detail Laporan / Keterangan <span class="required">*</span>
+                    </label>
+                    <textarea id="keterangan"
+                        placeholder="Jelaskan lokasi temuan jentik (misal: di pot bunga depan rumah) atau gejala yang dialami warga..."
+                        required></textarea>
+                    <p class="helper-text">Berikan detail selengkap mungkin untuk memudahkan tim melakukan verifikasi
+                    </p>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    ðŸ“¨ Kirim Laporan
+                </button>
+            </form>
+        </div>
+
+        <div class="form-footer">
+            <p>Tim PKM "Bersih Itu Patriotik" â€¢ Untuk kasus darurat, hubungi Puskesmas terdekat</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="../index.html">â† Kembali ke Beranda</a> | <a href="reports.html">Lihat Semua Laporan</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = {
+                id: 'RPT-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
+                timestamp: Date.now(),
+                name: document.getElementById('nama').value.trim() || 'Anonim',
+                email: document.getElementById('email').value.trim() || '-',
+                address: document.getElementById('alamat').value.trim(),
+                category: document.getElementById('kategori').value,
+                priority: document.querySelector('input[name="prioritas"]:checked').value,
+                status: 'pending',
+                note: document.getElementById('keterangan').value.trim()
+            };
+
+            // Save to localStorage (sama dengan lapor via Gmail)
+            try {
+                const reports = JSON.parse(localStorage.getItem('pkm_dbd_reports') || '[]');
+                reports.unshift(formData);
+                localStorage.setItem('pkm_dbd_reports', JSON.stringify(reports));
+
+                console.log('âœ“ Laporan berhasil disimpan ke localStorage');
+
+                // Show success message
+                showSuccessMessage();
+
+                // Reset form
+                document.getElementById('gform').reset();
+
+                // Redirect to reports page after 2 seconds
+                setTimeout(() => {
+                    if (confirm('Laporan berhasil disimpan!\n\nIngin melihat semua laporan di dashboard?')) {
+                        window.location.href = 'reports.html';
+                    }
+                }, 1500);
+
+            } catch (error) {
+                console.error('Error saving report:', error);
+                alert('âŒ Gagal menyimpan laporan. Silakan coba lagi.');
+            }
+
+            return false;
+        }
+
+        function showSuccessMessage() {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            successMsg.scrollIntoView({ behavior: 'smooth' });
+
+            // Hide after 5 seconds
+            setTimeout(function () {
+                successMsg.classList.remove('show');
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>
+
